@@ -60,7 +60,7 @@ class Itinerary < ActiveRecord::Base
     venue_name = doc.elements['JamBase_Data/event/venue/venue_name'].text
     name = doc.elements['JamBase_Data/event/artists/artist/artist_name'].text + " @ " + venue_name
     venue_zip = doc.elements['JamBase_Data/event/venue/venue_zip'].text
-    url = "https://api.foursquare.com/v2/venues/search?v=20130105&near=#{venue_zip}&query=#{ CGI.escape(venue_name)}"
+    url = "https://api.foursquare.com/v2/venues/search?v=20130105&near=#{venue_zip}&query=#{ CGI.escape(venue_name)}&oauth_token=#{self.foursquare_user.access_token}"
     STDERR.puts url
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
