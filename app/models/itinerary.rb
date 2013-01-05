@@ -72,8 +72,8 @@ class Itinerary < ActiveRecord::Base
     response = http.request(request)
     STDERR.puts response.body
     result = JSON.parse(response.body)
-    venue_id = result['response']['groups'][0]['items'][0]['venue']['name']
-    lat_lng = result['response']['groups'][0]['items'][0]['venue']['location']['lat'].to_s + "," +result['response']['groups'][0]['items'][0]['venue']['location']['lng'].to_s 
+    venue_id = result['response']['venues'][0]['name']
+    lat_lng = result['response']['venues'][0]['location']['lat'].to_s + "," +result['response']['venues'][0]['location']['lng'].to_s 
     self.stops.create({ :name => name, :time_to_post => next_time, :venue_id => venue_id})
     next_time = demo ? start : start + (80 + Random.rand(40)).minutes
     
