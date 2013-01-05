@@ -34,7 +34,6 @@ class Itinerary < ActiveRecord::Base
     url = "https://api.foursquare.com/v2/venues/explore?v=20130105&ll=#{lat_lng}&radius=2000&section=food&friendVisits=notvisited&oauth_token=#{self.foursquare_user.access_token}"
     STDERR.puts url
     response = HTTParty.get(url)
-    STDERR.puts response.body
     result = JSON.parse(response.body)
     STDERR.puts result.to_s
     name = result['response']['groups'][0]['items'][0]['venue']['name']
