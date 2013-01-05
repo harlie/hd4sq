@@ -61,6 +61,7 @@ class Itinerary < ActiveRecord::Base
     name = doc.elements['JamBase_Data/event/artists/artist/artist_name'].text + " @ " + venue_name
     venue_zip = doc.elements['JamBase_Data/event/venue/venue_zip'].text
     url = "https://api.foursquare.com/v2/venues/search?v=20130105&near=#{venue_zip}&query=#{ CGI.escape(venue_name)}"
+    STDERR.puts url
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
@@ -69,7 +70,7 @@ class Itinerary < ActiveRecord::Base
     request = Net::HTTP::Get.new(uri.request_uri)
 
     response = http.request(request)
-    
+    STDERR.puts response.body
     result = JSON.parse(response.body)
     venue_id = result['response']['groups'][0]['items'][0]['venue']['name']
     lat_lng = result['response']['groups'][0]['items'][0]['venue']['location']['lat'].to_s + "," +result['response']['groups'][0]['items'][0]['venue']['location']['lng'].to_s 
