@@ -13,7 +13,7 @@ class Itinerary < ActiveRecord::Base
   end
   
   def self.create_itinerary_from_checkin(checkin, user)
-    itin = itinerary.new
+    itin = self.new
     itin.foursquare_user = user
     itin.checkin_id = checkin['id']
     itin.save
