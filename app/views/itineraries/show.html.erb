@@ -5,7 +5,7 @@
     </div>
   <% end %>
   <%= form_for @itinerary do |f| %>
-    <%= f.hidden_field(:approved, "1") %>
+    <%= f.hidden_field(:approved, :value => "1") %>
     <%= f.submit %>
   <% end %>
 </div>
