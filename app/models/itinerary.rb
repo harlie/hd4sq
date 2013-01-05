@@ -32,11 +32,11 @@ class Itinerary < ActiveRecord::Base
     #restaurant
     lat_lng = checkin['venue']['location']['lat'].to_s + "," + checkin['venue']['location']['lng'].to_s
     url = "https://api.foursquare.com/v2/venues/explore?v=20130105&ll=#{lat_lng}&radius=2000&section=food&friendVisits=notvisited&oauth_token=#{self.foursquare_user.access_token}"
-    
+    STDERR.puts url
     response = HTTParty.get(url)
-    puts response.to_json
+    STDERR.puts response.to_json
     result = JSON.parse(response.body)
-    puts result.to_json
+    STDERR.puts result.to_json
     name = result['response']['groups'][0]['items'][0]['venue']['name']
     venue_id = result['response']['groups'][0]['items'][0]['venue']['name']
     self.stops.create({ :name => name, :time_to_post => start, :venue_id => venue_id})
