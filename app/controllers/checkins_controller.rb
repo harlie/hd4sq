@@ -1,4 +1,5 @@
 class CheckinsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   def checkin
     #get category from params
     checkin = JSON.parse(params['checkin'])
@@ -22,6 +23,7 @@ class CheckinsController < ApplicationController
     else
       STDERR.puts "not home checkin"
     end
+    render text: 'OK'
   end
   
 end
