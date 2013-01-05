@@ -47,12 +47,30 @@ class Itinerary < ActiveRecord::Base
     STDERR.puts result.to_s
     name = result['response']['groups'][0]['items'][0]['venue']['name']
     venue_id = result['response']['groups'][0]['items'][0]['venue']['name']
+    lat_lng = result['response']['groups'][0]['items'][0]['venue']['lat'].to_s + "," +result['response']['groups'][0]['items'][0]['venue']['lat'].to_s 
     self.stops.create({ :name => name, :time_to_post => start, :venue_id => venue_id})
     next_time = demo ? start : start + (80 + Random.rand(40)).minutes
     #concert
     
     #bar
-    self.stops.create({ :name => "stop 2", :time_to_post => next_time   })
+    url = "https://api.foursquare.com/v2/venues/explore?v=20130105&ll=#{lat_lng}&radius=2000&section=drinks&friendVisits=notvisited&oauth_token=#{self.foursquare_user.access_token}"
+    uri = URI.parse(url)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(uri.request_uri)
+
+    response = http.request(request)
+    STDERR.puts response.body
+    
+    
+    result = JSON.parse(response.body)
+    STDERR.puts result.to_s
+    name = result['response']['groups'][0]['items'][0]['venue']['name']
+    venue_id = result['response']['groups'][0]['items'][0]['venue']['name']
+    lat_lng = result['response']['groups'][0]['items'][0]['venue']['lat'].to_s + "," +result['response']['groups'][0]['items'][0]['venue']['lat'].to_s 
+    self.stops.create({ :name => name, :time_to_post => start, :venue_id => venue_id})
     
   end
 end
