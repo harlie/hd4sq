@@ -21,6 +21,6 @@ class Itinerary < ActiveRecord::Base
     itin.stops.create({ :name => "stop 1", :time_to_post => start + 10.minutes})
     itin.stops.create({ :name => "stop 2", :time_to_post => start + 100.minutes})
     itin.stops.create({ :name => "stop 3", :time_to_post => start + 200.minutes})
-    
+    return itin
   end
 end
