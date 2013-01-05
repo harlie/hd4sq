@@ -17,10 +17,25 @@ class Itinerary < ActiveRecord::Base
     itin.foursquare_user = user
     itin.checkin_id = checkin['id']
     itin.save
-    start = Time.now
-    itin.stops.create({ :name => "stop 1", :time_to_post => start + 10.minutes})
-    itin.stops.create({ :name => "stop 2", :time_to_post => start + 100.minutes})
-    itin.stops.create({ :name => "stop 3", :time_to_post => start + 200.minutes})
+    itin.fill_it_out(checkin)
     return itin
+  end
+  
+  def fill_it_out(checkin)
+    start = Time.now
+    demo = false
+    if checkin["shout"] && checkin['shout'] =~ /#demo/ 
+      demo = true 
+    else
+      start += 30.minutes
+    end
+    #restaurant
+    itin.stops.create({ :name => "stop 2", :time_to_post => start})
+    next_time = demo ? start : start + (80 + Random.rand(40)).minutes
+    #concert
+    
+    #bar
+    itin.stops.create({ :name => "stop 2", :time_to_post => next_time   })
+    
   end
 end
