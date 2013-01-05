@@ -10,7 +10,7 @@ Hd4sq::Application.routes.draw do
 		end
 	end
 
-
+  match '/checkins', :to => 'checkins#checkin', :via => 'POST'
   root :to => 'users#new'
 
   # The priority is based upon order of creation:

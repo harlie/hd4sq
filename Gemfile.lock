@@ -37,6 +37,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    crack (0.1.8)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -44,6 +45,8 @@ GEM
       multipart-post (~> 1.1)
     foursquare_rails_generators (0.1.7)
     hike (1.2.1)
+    httparty (0.7.4)
+      crack (= 0.1.8)
     httpauth (0.2.0)
     i18n (0.6.1)
     journey (1.0.4)
@@ -118,6 +121,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   foursquare_rails_generators
+  httparty
   jquery-rails
   oauth2
   pg
