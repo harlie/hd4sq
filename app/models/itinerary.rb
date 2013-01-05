@@ -17,9 +17,7 @@ class Itinerary < ActiveRecord::Base
     itin.foursquare_user = user
     itin.checkin_id = checkin['id']
     itin.save
-    array = Time.now.to_a
-    array[1] = array[1].round(-1)
-    start = Time.utc(array)
+    start = Time.now
     itin.stops.create({ :name => "stop 1", :time_to_post => start + 10.mins})
     itin.stops.create({ :name => "stop 2", :time_to_post => start + 100.mins})
     itin.stops.create({ :name => "stop 3", :time_to_post => start + 200.mins})
