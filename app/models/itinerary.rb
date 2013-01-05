@@ -48,9 +48,33 @@ class Itinerary < ActiveRecord::Base
     name = result['response']['groups'][0]['items'][0]['venue']['name']
     venue_id = result['response']['groups'][0]['items'][0]['venue']['name']
     lat_lng = result['response']['groups'][0]['items'][0]['venue']['location']['lat'].to_s + "," +result['response']['groups'][0]['items'][0]['venue']['location']['lng'].to_s 
+    zip = result['response']['groups'][0]['items'][0]['venue']['location']['postalCode'].to_s
     self.stops.create({ :name => name, :time_to_post => start, :venue_id => venue_id})
     next_time = demo ? start : start + (80 + Random.rand(40)).minutes
+    
     #concert
+    date = next_time.strftime('%m/%d/%y')
+    url = "http://api.jambase.com/search?apikey=78hjynre9at8tk4grtq3fdz7&zip=#{zip}&radius=10&startDate=#{date}&endDate=#{date}"
+    xml_data = Net::HTTP.get_response(URI.parse(url)).body
+    doc = REXML::Document.new(xml_data)
+    venue_name = doc.elements['JamBase_Data/event/venue/venue_name'].text
+    name = doc.elements['JamBase_Data/event/artists/artist/artist_name'].text + " @ " + venue_name
+    venue_zip = doc.elements['JamBase_Data/event/venue/venue_zip'].text
+    url = "https://api.foursquare.com/v2/venues/search?v=20130105&near=#{venue_zip}&query=#{ CGI.escape(venue_name)}"
+    uri = URI.parse(url)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(uri.request_uri)
+
+    response = http.request(request)
+    
+    result = JSON.parse(response.body)
+    venue_id = result['response']['groups'][0]['items'][0]['venue']['name']
+    lat_lng = result['response']['groups'][0]['items'][0]['venue']['location']['lat'].to_s + "," +result['response']['groups'][0]['items'][0]['venue']['location']['lng'].to_s 
+    self.stops.create({ :name => name, :time_to_post => next_time, :venue_id => venue_id})
+    
     
     #bar
     url = "https://api.foursquare.com/v2/venues/explore?v=20130105&ll=#{lat_lng}&radius=2000&section=drinks&friendVisits=notvisited&oauth_token=#{self.foursquare_user.access_token}"
