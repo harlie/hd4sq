@@ -6,7 +6,7 @@ class ItinerariesController < ApplicationController
   
   def update
      @itinerary = Itinerary.find_by_id(params[:id])
-     @itinerary.update_attributes(params[itinerary])
+     @itinerary.update_attributes(params[:itinerary])
      render 'show'
   end
 end
