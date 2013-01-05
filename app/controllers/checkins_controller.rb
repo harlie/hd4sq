@@ -17,12 +17,11 @@ class CheckinsController < ApplicationController
     #https://api.foursquare.com/v2/checkins/CHECKIN_ID/reply
     if home 
       STDERR.puts "home checkin"
-      url = "https://api.foursquare.com/v2/checkins/#{checkin_id}/reply"
-      reply = HTTParty.post(url, options)
-  
+      user_id = checkin['user']['id']
       user = FoursquareUser.find_by_foursquare_id(user_id)
       options = { :body => {:text => 'lazy bum', :oauth_token => user.access_token}}
-      user_id = checkin['user']['id']
+      url = "https://api.foursquare.com/v2/checkins/#{checkin_id}/reply"
+      reply = HTTParty.post(url, options)
       STDERR.puts reply.to_s
     else
       STDERR.puts "not home checkin"
