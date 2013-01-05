@@ -6,7 +6,7 @@ class Stop < ActiveRecord::Base
   scope :post_due, lambda { where("(complete is null OR complete !=true) AND time_to_post < ?", Time.now ) }
   
   def check_in
-    options = { :body => {:v => '20130105', :oauth_token => user.access_token, :venue_id => self.venue_id, :broadcast => 'public,facebook,twitter'}}
+    options = { :body => {:v => '20130105', :oauth_token => self.itinerary.foursquare_user.access_token, :venue_id => self.venue_id, :broadcast => 'public,facebook,twitter'}}
     url = "https://api.foursquare.com/v2/checkins/add"
     reply = HTTParty.post(url, options)
     self.complete = true
