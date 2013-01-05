@@ -30,7 +30,14 @@ class Itinerary < ActiveRecord::Base
       start += 30.minutes
     end
     #restaurant
-    self.stops.create({ :name => "stop 2", :time_to_post => start})
+    lat_lng = checkin['venue']['location']['lat'] + "," + checkin['venue']['location']['lng']
+    options = { :body => {:v => '20130105', :ll => lat_lng, :section => 'food', :friendVisits => 'notvisited'}}
+    url = "https://api.foursquare.com/v2/venues/explore"
+    response = HTTParty.get(url, options)
+    result = JSON.parse(response.body)
+    name = result['response']['groups'][0]['items'][0]['venue']['name']
+    venue_id = result['response']['groups'][0]['items'][0]['venue']['name']
+    self.stops.create({ :name => name, :time_to_post => start, :venue_id => venue_id})
     next_time = demo ? start : start + (80 + Random.rand(40)).minutes
     #concert
     
