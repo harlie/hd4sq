@@ -17,7 +17,7 @@ class CheckinsController < ApplicationController
     if home 
       STDERR.puts "home checkin"
       url = "https://api.foursquare.com/v2/checkins/#{checkin_id}/reply"
-      options = { :body => {:text => 'lazy bum'}
+      options = { :body => {:text => 'lazy bum'}}
       reply = HTTParty.post(url, options)
     else
       STDERR.puts "not home checkin"
