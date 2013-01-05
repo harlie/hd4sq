@@ -18,9 +18,9 @@ class Itinerary < ActiveRecord::Base
     itin.checkin_id = checkin['id']
     itin.save
     start = Time.now
-    itin.stops.create({ :name => "stop 1", :time_to_post => start + 10.mins})
-    itin.stops.create({ :name => "stop 2", :time_to_post => start + 100.mins})
-    itin.stops.create({ :name => "stop 3", :time_to_post => start + 200.mins})
+    itin.stops.create({ :name => "stop 1", :time_to_post => start + 10.minutes})
+    itin.stops.create({ :name => "stop 2", :time_to_post => start + 100.minutes})
+    itin.stops.create({ :name => "stop 3", :time_to_post => start + 200.minutes})
     
   end
 end
