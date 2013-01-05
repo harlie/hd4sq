@@ -46,7 +46,7 @@ class Itinerary < ActiveRecord::Base
     result = JSON.parse(response.body)
     STDERR.puts result.to_s
     name = result['response']['groups'][0]['items'][0]['venue']['name']
-    venue_id = result['response']['groups'][0]['items'][0]['venue']['name']
+    venue_id = result['response']['groups'][0]['items'][0]['venue']['id']
     lat_lng = result['response']['groups'][0]['items'][0]['venue']['location']['lat'].to_s + "," +result['response']['groups'][0]['items'][0]['venue']['location']['lng'].to_s 
     zip = result['response']['groups'][0]['items'][0]['venue']['location']['postalCode'].to_s
     self.stops.create({ :name => name, :time_to_post => start, :venue_id => venue_id})
@@ -72,7 +72,7 @@ class Itinerary < ActiveRecord::Base
     response = http.request(request)
     STDERR.puts response.body
     result = JSON.parse(response.body)
-    venue_id = result['response']['venues'][0]['name']
+    venue_id = result['response']['venues'][0]['id']
     lat_lng = result['response']['venues'][0]['location']['lat'].to_s + "," +result['response']['venues'][0]['location']['lng'].to_s 
     self.stops.create({ :name => name, :time_to_post => next_time, :venue_id => venue_id})
     next_time = demo ? start : next_time + (80 + Random.rand(40)).minutes
@@ -94,7 +94,7 @@ class Itinerary < ActiveRecord::Base
     result = JSON.parse(response.body)
     STDERR.puts result.to_s
     name = result['response']['groups'][0]['items'][0]['venue']['name']
-    venue_id = result['response']['groups'][0]['items'][0]['venue']['name']
+    venue_id = result['response']['groups'][0]['items'][0]['venue']['id']
     lat_lng = result['response']['groups'][0]['items'][0]['venue']['location']['lat'].to_s + "," +result['response']['groups'][0]['items'][0]['venue']['location']['lng'].to_s 
     self.stops.create({ :name => name, :time_to_post => next_time, :venue_id => venue_id})
     
