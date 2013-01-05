@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  foursquare_user_id: 1
+  checkin_id: MyString
+
+two:
+  foursquare_user_id: 1
+  checkin_id: MyString

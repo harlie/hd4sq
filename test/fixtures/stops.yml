@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  itinerary_id: 1
+  name: MyString
+  venue_id: MyString
+  time_to_post: 2013-01-05 13:40:20
+  complete: false
+
+two:
+  itinerary_id: 1
+  name: MyString
+  venue_id: MyString
+  time_to_post: 2013-01-05 13:40:20
+  complete: false
