@@ -30,12 +30,12 @@ class Itinerary < ActiveRecord::Base
       start += 30.minutes
     end
     #restaurant
-    itin.stops.create({ :name => "stop 2", :time_to_post => start})
+    self.stops.create({ :name => "stop 2", :time_to_post => start})
     next_time = demo ? start : start + (80 + Random.rand(40)).minutes
     #concert
     
     #bar
-    itin.stops.create({ :name => "stop 2", :time_to_post => next_time   })
+    self.stops.create({ :name => "stop 2", :time_to_post => next_time   })
     
   end
 end
