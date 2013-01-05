@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103111300) do
+ActiveRecord::Schema.define(:version => 20130105184020) do
 
   create_table "foursquare_users", :force => true do |t|
     t.string   "foursquare_id"
@@ -21,5 +21,22 @@ ActiveRecord::Schema.define(:version => 20121103111300) do
   end
 
   add_index "foursquare_users", ["foursquare_id"], :name => "index_foursquare_users_on_foursquare_id"
+
+  create_table "itineraries", :force => true do |t|
+    t.integer  "foursquare_user_id"
+    t.string   "checkin_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "stops", :force => true do |t|
+    t.integer  "itinerary_id"
+    t.string   "name"
+    t.string   "venue_id"
+    t.datetime "time_to_post"
+    t.boolean  "complete"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
 end
