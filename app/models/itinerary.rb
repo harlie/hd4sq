@@ -75,7 +75,7 @@ class Itinerary < ActiveRecord::Base
     venue_id = result['response']['venues'][0]['name']
     lat_lng = result['response']['venues'][0]['location']['lat'].to_s + "," +result['response']['venues'][0]['location']['lng'].to_s 
     self.stops.create({ :name => name, :time_to_post => next_time, :venue_id => venue_id})
-    next_time = demo ? start : start + (80 + Random.rand(40)).minutes
+    next_time = demo ? start : next_time + (80 + Random.rand(40)).minutes
     
     
     #bar
