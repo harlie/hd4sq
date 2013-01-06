@@ -51,7 +51,8 @@ class Itinerary < ActiveRecord::Base
     zip = result['response']['groups'][0]['items'][0]['venue']['location']['postalCode'].to_s
     self.stops.create({ :name => name, :time_to_post => start, :venue_id => venue_id})
     next_time =  start + (80 + Random.rand(40)).minutes
-    self.itinerary.zip = zip
+    self.zip = zip
+    self.save
     #concert
     date = next_time.strftime('%m/%d/%y')
     url = "http://api.jambase.com/search?apikey=78hjynre9at8tk4grtq3fdz7&zip=#{zip}&radius=10&startDate=#{date}&endDate=#{date}"
