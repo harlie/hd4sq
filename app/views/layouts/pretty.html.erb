@@ -22,27 +22,7 @@
         <h1>CouchCachet</h1>
     </header>
     <div class="container">
-
-		<% @itinerary.stops.each_with_index do |stop, index| %>
-        <div class="note">
-            <%=<p>Stop "#{index + 1}"</p> %>
-        </div><!--/note-->
-
-        <div class="checkin">
-            <div class="title">
-                <h2><%= stop.name %></h2>
-            </div><!--/title-->
-            <div class="content">
-				<p>content</p>
-            </div><!--/content-->
-        </div><!--/checkin-->
-		<% end %>
-		  <%= form_for @itinerary do |f| %>
-		    <%= f.hidden_field(:approved, :value => "1") %>
-		    <%= f.submit %>
-		  <% end %>
-        <a href="" class="btn">Let's Do This!</a>
-        <p class="cancel">Not Feeling it?</p>
+      <%= yield %>
 
     </div><!--/container-->
 
