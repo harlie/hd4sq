@@ -1,4 +1,6 @@
-Standard:
+- 
+ name: Standard
+ path:
  - #restaurant
   api: foursquare
   params: section=food

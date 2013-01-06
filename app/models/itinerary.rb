@@ -29,7 +29,7 @@ class Itinerary < ActiveRecord::Base
       itin.demo = true 
     end
     itin.save
-    itin.fill_it_out('Standard')
+    itin.fill_it_out(0)
 
     return itin
   end
@@ -78,7 +78,7 @@ class Itinerary < ActiveRecord::Base
     routes = YAML.load_file("#{Rails.root}/config/itineraries.yml")
     next_time = Time.now + 30.minutes
   
-    routes[route].each do |stop|
+    routes[route]['path'].each do |stop|
       params = stop['params'] ? stop['params'] : ""
       shout_idx = Random.rand(stop['shouts'].length)
       shout = stop['shouts'][shout_idx]
