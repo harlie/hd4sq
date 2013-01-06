@@ -13,7 +13,10 @@ class ItinerariesController < ApplicationController
      @itinerary.reload
      if (@itinerary.demo && @itinerary.approved? )
        @itinerary.stops.each do |stop|
-         stop.check_in
+         begin
+           stop.check_in
+         rescue
+         end   
        end
        FollowUpMailer::follow_up(@itinerary).deliver
      end

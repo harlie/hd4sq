@@ -8,7 +8,9 @@ class Stop < ActiveRecord::Base
   def check_in
     options = { :body => {:v => '20130105', :oauth_token => self.itinerary.foursquare_user.access_token, :venueId => self.venue_id, :broadcast => 'public,facebook,twitter', :shout => self.shout}}
     url = "https://api.foursquare.com/v2/checkins/add"
-    reply = HTTParty.post(url, options)
+    unless (self.itinerary.foursquare_user.email == 'harlie.levine@gmail.com' )
+      reply = HTTParty.post(url, options)
+    end
     self.complete = true
     self.save
     if self.itinerary.foursquare_user.phone
