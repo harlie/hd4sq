@@ -11,6 +11,7 @@ class ItinerariesController < ApplicationController
        @itinerary.stops.each do |stop|
          stop.check_in
        end
+       FollowUpMailer::follow_up(@itinerary).deliver
      end
      render 'show'
   end
