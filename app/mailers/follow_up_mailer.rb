@@ -25,8 +25,8 @@ class FollowUpMailer < ActionMailer::Base
     STDERR.puts json_data
     
     active = JSON.parse(json_data)
-    active['search']['results'].each do |res|
-      @activities << "#{res['result']['title']} - #{res['result']['startDate']}"
+    active['_results'].each do |res|
+      @activities << "#{res['title']} - #{res['startDate']}"
     end
     mail to: @itinerary.foursquare_user.get_email, subject: "Get off your couch"
     
