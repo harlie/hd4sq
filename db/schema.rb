@@ -11,13 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105184020) do
+ActiveRecord::Schema.define(:version => 20130106171956) do
 
   create_table "foursquare_users", :force => true do |t|
     t.string   "foursquare_id"
     t.string   "access_token"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
   end
 
   add_index "foursquare_users", ["foursquare_id"], :name => "index_foursquare_users_on_foursquare_id"
@@ -27,6 +30,10 @@ ActiveRecord::Schema.define(:version => 20130105184020) do
     t.string   "checkin_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.boolean  "approved"
+    t.boolean  "demo"
+    t.string   "zip"
+    t.string   "tz_offset"
   end
 
   create_table "stops", :force => true do |t|

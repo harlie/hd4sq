@@ -4,10 +4,15 @@ class Itinerary < ActiveRecord::Base
   attr_accessible :checkin_id, :foursquare_user_id, :approved, :demo,:zip,:tz_offset
   
   def to_s
+    self.checkin_id
+  end
+  
+  def to_reply
     sched = ''
     stops.each do |stop|
-      sched += stop.local_time_to_post.strftime('%l:%M%P')
-      sched += " - " + stop.name + "\n"
+      #sched += stop.local_time_to_post.strftime('%l:%M%P')
+      # sched += " - " +
+      sched += stop.name + "\n"
     end   
     return sched
   end
