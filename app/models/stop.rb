@@ -14,7 +14,7 @@ class Stop < ActiveRecord::Base
   end
   
   def local_time_to_post
-    offset = self.itinerary.tz_offset? self.itinerary.tz_offset : "00:00"
+    offset = self.itinerary.tz_offset ? self.itinerary.tz_offset : "00:00"
     return time_to_post + Time.zone_offset(offset)
   end
   
