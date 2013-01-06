@@ -16,12 +16,13 @@ class Itinerary < ActiveRecord::Base
     itin = self.new
     itin.foursquare_user = user
     itin.checkin_id = checkin['id']
-    itin.save
-    itin.fill_it_out(checkin)
     itin.demo = false
     if checkin["shout"] && checkin['shout'] =~ /#demo/ 
       itin.demo = true 
     end
+    itin.save
+    itin.fill_it_out(checkin)
+
     return itin
   end
   
