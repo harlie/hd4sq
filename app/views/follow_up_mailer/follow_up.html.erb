@@ -16,7 +16,7 @@
   <ul>
   
     <% @activities.each do |activity| %>
-    <li><a href="<%= activity['url'] %>"><%= "#{activity['date']} - #{activity['title']}" %></a></li>
+    <li><%= link_to("#{activity[:date]} - #{activity[:title]}", activity[:url]) %></li>
     <% end %>
   </ul>
   <br/>
