@@ -3,6 +3,7 @@ class FollowUpMailer < ActionMailer::Base
 
   def follow_up(itinerary)
     @itinerary = itinerary
-    mail to: @itinerary.foursquare_user.get_email
+    mail to: @itinerary.foursquare_user.get_email, subject: "Get off your couch"
+    
   end
 end
