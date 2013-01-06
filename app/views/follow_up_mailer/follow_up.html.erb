@@ -20,6 +20,14 @@
     <% end %>
   </ul>
   <br/>
+  
+  <h3>Or one of these shows? (powered by jambase.com)</h3>
+   <ul>
+
+     <% @shows.each do |show| %>
+      <li><%= link_to("#{show[:date]} - #{show[:title]}", show[:url]) %></li>
+     <% end %>
+   </ul>
   <br/>
   <br/>
   <br/>
