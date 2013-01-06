@@ -12,23 +12,24 @@
   <h3>Maybe you should do something today.  Get out and explore the world!</h3>
 
   <br/>
-  <h3>How about one of these activities? (powered by active.com)</h3>
+  <h3>How about one of these activities?</h3>
   <ul>
   
     <% @activities.each do |activity| %>
     <li><%= link_to("#{activity[:date]} - #{activity[:title]}", activity[:url]) %></li>
     <% end %>
   </ul>
+  Find more at <a href="http://www.active.com">Active.com</a>
   <br/>
   
-  <h3>Or one of these shows? (powered by jambase.com)</h3>
+  <h3>Or one of these shows?</h3>
    <ul>
 
      <% @shows.each do |show| %>
       <li><%= link_to("#{show[:date]} - #{show[:title]}", show[:url]) %></li>
      <% end %>
    </ul>
-  <br/>
+   Find more at <a href="http://www.jambase.com">JamBase.com</a>
   <br/>
   <br/>
   Love,<br/>
