@@ -19,7 +19,11 @@ class FollowUpMailer < ActionMailer::Base
   #  end
     
     url ="http://api.amp.active.com/search?v=json&l=#{@itinerary.zip}&api_key=EJZBN9Q8AG76TV49P5M5DRR5"
+    STDERR.puts url
+    
     json_data = Net::HTTP.get_response(URI.parse(url)).body
+    STDERR.puts json_data
+    
     active = JSON.parse(json_data)
     active['search']['results'].each do |res|
       @activities << "#{res['result']['title']} - #{res['result']['startDate']}"
