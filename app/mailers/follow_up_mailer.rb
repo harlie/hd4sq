@@ -18,15 +18,13 @@ class FollowUpMailer < ActionMailer::Base
   #    @shows << "#{date} - #{artist} @  #{venue_name}"
   #  end
     
-    url ="http://api.amp.active.com/search?v=json&l=#{@itinerary.zip}&api_key=EJZBN9Q8AG76TV49P5M5DRR5"
-    STDERR.puts url
-    
+    url ="http://api.amp.active.com/search?v=json&l=#{@itinerary.zip}&api_key=EJZBN9Q8AG76TV49P5M5DRR5&m=meta:startDate:daterange:today..week"    
     json_data = Net::HTTP.get_response(URI.parse(url)).body
-    STDERR.puts json_data
     @activities = Array.new
     active = JSON.parse(json_data)
     active['_results'].each do |res|
-      @activities << "#{res['title']} - #{res['startDate']}"
+      date =~ res['meta']['startDate'].gsub(/\d*-(\d*)-(\d*)/, '\1/\2')
+      @activities << { :title => res['title'], :date => date , :url => res['url']}
     end
     mail to: @itinerary.foursquare_user.get_email, subject: "Get off your couch"
     
