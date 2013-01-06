@@ -13,17 +13,10 @@ class FoursquareUser < ActiveRecord::Base
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
     request = Net::HTTP::Get.new(uri.request_uri)
-
     response = http.request(request)
-    STDERR.puts response.body
-    
-    
     result = JSON.parse(response.body)
-    STDERR.puts result.to_s
-    email = result['response']['user']['contact']['email']
-    
+    email = result['response']['user']['contact']['email']  
   end
   class << self
     def find_or_create_by_access_token(access_token)
