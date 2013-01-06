@@ -21,46 +21,25 @@
     <header>
         <h1>CouchCachet</h1>
     </header>
+    <div class="container">
 
-    <div class="note">
-		<div class="itinerary">
-		  <% @itinerary.stops.each do |stop| %>
-		    <div class="checkin">
-		      <%= stop.time_to_post.strftime('%l:%M%P') + " " + stop.name %>
-		    </div>
-		  <% end %>
+		<% @itinerary.stops.each_with_index do |stop, index| %>
+        <div class="note">
+            <%=<p>Stop "#{index + 1}"</p> %>
+        </div><!--/note-->
+
+        <div class="checkin">
+            <div class="title">
+                <h2><%= stop.name %></h2>
+            </div><!--/title-->
+            <div class="content">
+                <p><%= stop.time_to_post.strftime('%l:%M%P')</p>
+            </div><!--/content-->
+        </div><!--/checkin-->
 		  <%= form_for @itinerary do |f| %>
 		    <%= f.hidden_field(:approved, :value => "1") %>
 		    <%= f.submit %>
 		  <% end %>
-		</div>
-        <div class="note">
-            <p>Stop 1</p>
-        </div><!--/note-->
-
-        <div class="checkin">
-            <div class="title">
-                <h2>Title</h2>
-            </div><!--/title-->
-            <div class="content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div><!--/content-->
-        </div><!--/checkin-->
-
-        <div class="note">
-            <p>Stop 2</p>
-        </div><!--/note-->
-
-        <div class="checkin">
-            <div class="title">
-                <h2>Title</h2>
-            </div><!--/title-->
-            <div class="content">
-                <p>Lorem ipsum dolor sit amet</p>
-                <img src="http://placekitten.com/600/270"/>
-            </div><!--/content-->
-        </div><!--/checkin-->
-
         <a href="" class="btn">Let's Do This!</a>
         <p class="cancel">Not Feeling it?</p>
 
