@@ -1,0 +1,19 @@
+Standard:
+ - #restaurant
+  api: foursquare
+  params: section=food
+  shouts:
+  - Love the food here
+  - Yum!
+
+ - #concert
+   api: jambase
+   shouts:
+   - These guys are great!
+   - Can't believe I get to see this live!
+
+ - #bar
+   api: foursquare
+   params: section=food
+   shouts:
+   - Great vibe!
