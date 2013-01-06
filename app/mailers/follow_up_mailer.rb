@@ -9,12 +9,12 @@ class FollowUpMailer < ActionMailer::Base
     url = "http://api.jambase.com/search?apikey=78hjynre9at8tk4grtq3fdz7&zip=#{@itinerary.zip}&radius=10&startDate=#{start_date}&endDate=#{end_date}"
     STDERR.puts url
     xml_data = Net::HTTP.get_response(URI.parse(url)).body
-    doc = REXML::Document.new(xml_data)
+    doc = XmlSimple.xml_in(xml_data, { 'KeyAttr' => 'name' })    
     @shows = Array.new
-    doc.elements['JamBase_Data/event'].each do |event|
-      venue_name = event.elements['venue/venue_name'].text
-      date = event.elements['event_date'].text
-      artist = event.elements['artists/artist/artist_name'].text 
+    doc['event'].each do |event|
+      venue_name = event['venue'][0]['venue_name'][0]
+      date = event['event_date'][0]
+      artist = event['artists'][0]['artist'][0]['artist_name'][0]
       event_url = event.elements['event_url'].text
       @shows << { :title => "#{artist} @ #{venue_name}", :date => date , :url => event_url}
     end
