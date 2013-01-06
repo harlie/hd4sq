@@ -2,7 +2,7 @@ class FollowUpMailer < ActionMailer::Base
   default from: "mailer@couchcachet.com"
 
   def follow_up(itinerary)
-    return unless itinerary.foursquare_user.emai
+    return unless itinerary.foursquare_user.email
     @itinerary = itinerary
     @itinerary.zip =  @itinerary.zip ?  @itinerary.zip : 10001
     start_date = Time.now.strftime('%m/%d/%y')
