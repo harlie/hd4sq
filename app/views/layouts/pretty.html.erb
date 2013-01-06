@@ -33,9 +33,10 @@
                 <h2><%= stop.name %></h2>
             </div><!--/title-->
             <div class="content">
-                <p><%= stop.time_to_post.strftime('%l:%M%P')</p>
+				<p>content</p>
             </div><!--/content-->
         </div><!--/checkin-->
+		<% end %>
 		  <%= form_for @itinerary do |f| %>
 		    <%= f.hidden_field(:approved, :value => "1") %>
 		    <%= f.submit %>
