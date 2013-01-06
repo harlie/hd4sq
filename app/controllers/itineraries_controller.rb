@@ -10,7 +10,7 @@ class ItinerariesController < ApplicationController
         end
         FollowUpMailer::follow_up(@itinerary).deliver
       end
-      redirect_to 'http://www.couchcachet.com/screen-grab.html
+      redirect_to 'http://www.couchcachet.com/screen-grab.html'
     end
   end
   
