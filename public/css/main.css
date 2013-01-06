@@ -1,0 +1,432 @@
+/* ==========================================================================
+   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+   ========================================================================== */
+
+html, button, input, select, textarea { color: #222; }
+body { font-size: 1em; line-height: 1.4; }
+
+::-moz-selection { background: #b3d4fc; text-shadow: none; }
+::selection { background: #b3d4fc; text-shadow: none; }
+.chromeframe { margin: 0.2em 0; background: #ccc; color: #000; padding: 0.2em 0;}
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+img { vertical-align: middle; }
+a{ text-decoration: none; }
+body { font: 16px/26px Helvetica, Helvetica Neue, Arial;  -webkit-font-smoothing: antialiased; font-smooth: always; text-shadow: 1px 1px 1px rgba(0,0,0,0.004);}
+.wrapper { width: 92%; margin: 0 4%; }
+
+
+
+/* ==========================================================================
+   Main Theme Styles
+   ========================================================================== */
+
+
+.header-container {
+    background: #f3f8fc; /* Adjust Background colour of header */
+    color: #525b60;  /* Adjust colour of header text */
+	text-shadow: 1px 1px 0 #ffffff;
+	padding-top: 0px;
+}
+
+
+/* ==========================================================================
+   LOGO
+   ========================================================================== */
+.header-container h1{
+	text-indent: -10000em;
+	position: relative;
+	width: 320; /* Adjust Width for Logo if needed */
+	height: 63px; /* Adjust Height for Logo if needed */
+	background: url(../img/logo.png) no-repeat center 0; /* Change Your Logo Name */
+	background-size: 100%;
+	margin: 0 auto;
+}
+@media (min--moz-device-pixel-ratio: 1.5),
+	(-o-min-device-pixel-ratio: 3/2),
+	(-webkit-min-device-pixel-ratio: 1.5),
+	(min-device-pixel-ratio: 1.5),
+	(min-resolution: 1.5dppx) {
+	/* on retina, use image that's scaled by 2 */
+.header-container h1{
+	background: url(../img/logo@2x.png) no-repeat 0 0; /* Change Retina Logo */
+}
+}
+
+
+
+.header-container h3{
+	color: #2e353a;
+	font-weight: normal;
+	font-size: 1.6em;
+	line-height: 1.2;
+}
+.header-container h4{
+	font-weight: 700;
+	color: #0ca2d9;
+	margin-bottom: 5px;
+	margin-top: 40px;
+}
+.ctaColumn ul{
+	margin: 0;
+	padding: 20px 0;
+}
+.header-container li{
+	list-style-type: none;
+}
+.ctaColumn li{
+	display: inline-block;
+	text-align: center;
+	margin: 5px;
+}
+.ctaColumn li a{
+	opacity: .999;
+	-webkit-transition: all 300ms ease-in-out;
+	-moz-transition: all 300ms ease-in-out;
+	-ms-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+	width: 190px;
+	display: block;
+}
+.ctaColumn li a:hover{
+	opacity: .7;
+}
+.ctaColumn li a img{
+	width: 100%;
+}
+.ctaColumn{
+	text-align: center;
+	padding-top: 0px;
+	margin-bottom: 50px;
+}
+.available{
+	font-size: .9em;
+}
+.available, .available a {
+	font-weight: 700;
+	color: #c1d0dc; /* Change colour of alt app store links */
+	-webkit-transition: all 300ms ease-in-out;
+	-moz-transition: all 300ms ease-in-out;
+	-ms-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+}
+.available a:hover{
+	color: #6b7d84; /* Change colour of alt app store links on hover */
+}
+.ctaColumn input[type="text"]{
+	border-radius: 4px;
+	padding: 0.8em;
+	width: 85%;
+	border: 1px solid #e1e8ed;
+	color: #657884;
+	text-align: center;
+	outline: none;
+	box-shadow: none;
+	-webkit-appearance:none;
+}
+.signup{
+	position: relative;	
+}
+.signup:after{
+	content: "";
+	position: absolute;
+	right: 10%;
+	top: 15px;
+	background: url(../img/mailIcon.png) no-repeat center 0; /*Image of iphone 5 in hand */
+	width: 28px;
+	height: 14px;
+	background-size: 100%;
+	display: none;
+}
+@media (min--moz-device-pixel-ratio: 1.5),
+	(-o-min-device-pixel-ratio: 3/2),
+	(-webkit-min-device-pixel-ratio: 1.5),
+	(min-device-pixel-ratio: 1.5),
+	(min-resolution: 1.5dppx) {
+	/* on retina, use image that's scaled by 2 */
+.signup:after{
+	background: url(../img/iphone_nohand@2x.png) no-repeat center 0; /*Image of iphone 5 in hand */
+}
+}
+.fader{
+	position: relative;
+	padding-bottom: 268px;
+	width: 286px;
+	margin-right: auto;
+	margin-left: auto;
+	background: url(../img/iphone_nohand.png) no-repeat center 0; /*Image of iphone 5 in hand */
+	background-size: 100%;
+}
+@media (min--moz-device-pixel-ratio: 1.5),
+	(-o-min-device-pixel-ratio: 3/2),
+	(-webkit-min-device-pixel-ratio: 1.5),
+	(min-device-pixel-ratio: 1.5),
+	(min-resolution: 1.5dppx) {
+	/* on retina, use image that's scaled by 2 */
+.fader{
+	background: url(../img/iphone_nohand@2x.png) no-repeat center 0; /*Image of iphone 5 in hand */
+}
+}
+.fader .flexslider1{
+	width: 244px;
+	height: 434px;
+	position: relative;
+	top: 87px;
+	margin-bottom: 0;
+	margin-right: auto;
+	margin-left: auto;
+}
+.fader .flex-control-nav{
+	bottom: -60px;
+}
+.fader:before{
+	content: "";
+	position: absolute;
+	left: 0px;
+	top: 2px;
+	width: 286px;
+	height: 605px;
+}
+.fader .flex-control-paging li a {
+	width: 11px; 
+	height: 11px; 
+	display: block; 
+	background: #485762; /* Change colour of iphone nav dots */
+	cursor: pointer; 
+	text-indent: -9999px; 
+	border-radius: 20px;
+	-webkit-transition: all 300ms ease-in-out;
+	-moz-transition: all 300ms ease-in-out;
+	-ms-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out; 
+}
+.fader .flex-control-paging li a:hover { 
+	background: #5a6c79; /* Change colour of iphone nav dots on hover */
+}
+.fader .flex-control-paging li a.flex-active { 
+	background: #0ca2d9; /* Change colour of iphone nav dots when active */
+	cursor: default;
+}
+.fader .slides li img{
+	width: 100%;
+}
+.main-container{
+	background: #293034; /* Adjust Background colour of Main Area */
+	color: #bbc7d1; /* Adjust colour of Main Text */
+}
+.main { 
+	padding: 80px 0 100px; 
+}
+.main-container h2{
+	color: #f3f8fc;
+}
+.main-container h6{
+	color: #3c444a;
+	font-size: 6em;
+	margin: 0.5em 0;
+}
+.main-container section{
+	border-top: 1px solid #586168;
+	padding-top: 1em;
+	margin-top: 40px;
+}
+.flexslider2 {
+	margin-bottom: 90px;
+}
+.quote .slides li{
+	font-size: 1.8em;
+	line-height: 1.4;
+	font-weight: 100;
+	text-align: center;
+	padding-bottom: .5em;
+	width: 244px;
+}
+.quote .flex-control-paging li a {
+	width: 11px; 
+	height: 11px; 
+	display: block; 
+	background: #485762; /* Change colour of iphone nav dots */
+	cursor: pointer; 
+	text-indent: -9999px;
+	border-radius: 20px; 
+	-webkit-transition: all 300ms ease-in-out;
+	-moz-transition: all 300ms ease-in-out;
+	-ms-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+}
+.quote .flex-control-paging li a:hover { 
+	background: #5a6c79; /* Change colour of iphone nav dots on hover */
+}
+.quote .flex-control-paging li a.flex-active { 
+	background: #f3f8fc;  /* Change colour of iphone nav dots when active */
+	cursor: default;
+	}
+.footer-container {
+    background: #363d42;  /* Adjust Background colour of Footer Area */
+    font-size: .8em;
+    padding-bottom: 100px;
+    padding-top: 40px;
+}
+
+
+/* ==========================================================================
+   FOOTER LOGO
+   ========================================================================== */ 
+.footer-container h1{
+	text-indent: -10000em;
+	position: relative;
+	width: 142px; /* Adjust Width for Logo if needed */
+	height: 19px; /* Adjust Height for Logo if needed */
+	background: url(../img/logo_foot.png) no-repeat center 0; /* Change Logo */
+	background-size: 100%;
+	margin: 0 auto 40px;
+}
+@media (min--moz-device-pixel-ratio: 1.5),
+	(-o-min-device-pixel-ratio: 3/2),
+	(-webkit-min-device-pixel-ratio: 1.5),
+	(min-device-pixel-ratio: 1.5),
+	(min-resolution: 1.5dppx) {
+	/* on retina, use image that's scaled by 2 */
+.footer-container h1{
+	background: url(../img/logo_foot@2x.png) no-repeat 0 0; /*Change Retina Logo */
+}
+}
+
+
+
+.footer-container ul{
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+.footer-container li{
+	display: inline-block;
+	text-align: center;
+	list-style-type: none;
+	margin-left: 30px;
+}
+.footer-container li:first-child{
+	margin-left: 0;
+}
+.footer-container li a{
+	color: #aabdcd; /* Change colour of footer links */
+	font-weight: 700;
+	-webkit-transition: all 300ms ease-in-out;
+	-moz-transition: all 300ms ease-in-out;
+	-ms-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+}
+.footer-container li a:hover{
+	color: #fbfdff; /* Change colour of footer links on hover */
+}
+.footer-container footer {
+	color: #fff; 
+	padding: 20px 0; 
+}
+
+
+/* ==========================================================================
+   Insert Author's custom styles
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) { }
+@media only screen and (min-width: 680px) {
+	.wrapper { width: 90%; margin: 0 5%; }
+	.ctaColumn input[type="text"]{ text-align: left; }
+	.signup:after{ display: block; }
+	.fader .flexslider1{ left: 209px; margin-right: 0; margin-left: 0; }
+	.fader{ padding-bottom: 348px;  margin: 0; background: none;}
+	.fader:before {
+		background: url(../img/iphone.png) 0 0; /*Image of iphone 5 in hand */ 
+		background-size: 100%;
+		left: -40px; 
+		width: 593px;
+		height: 782px;
+		top: 0px;
+	}
+	@media (min--moz-device-pixel-ratio: 1.5),
+		(-o-min-device-pixel-ratio: 3/2),
+		(-webkit-min-device-pixel-ratio: 1.5),
+		(min-device-pixel-ratio: 1.5),
+		(min-resolution: 1.5dppx) {
+		/* on retina, use image that's scaled by 2 */
+	.fader:before {
+		background: url(../img/iphone@2x.png) 0 0; /*Image of iphone 5 in hand */ 
+	}
+	}
+		
+}
+@media only screen and (min-width: 768px) {
+    .main-container section{ width: 25%; float: left; margin-right: 12%; }
+    .main-container section.last{ margin-right: 0px; }
+    .footer-container h1{ float: left; }
+    .footer-container ul{ float: right; }
+    .fader .flexslider1{ left: 225px; }
+    .fader:before{ left: -24px; }
+    .flexslider2 { margin-bottom: 60px; }
+}
+@media only screen and (min-width: 870px) {
+	.header-container h1{
+		background: url(../img/logo.png) no-repeat 0 0; /* Logo */
+		margin: 0;
+	}
+	.ctaColumn { float: right; width: 52%; padding-bottom: 80px; text-align: left; padding-top: 70px; }
+	.signup:after{ right: 15%; }
+	.fader { float: left; width: 35%; }
+	.header-container { padding-top: 120px; }
+	.fader .flexslider1{ left: 9px; }
+	.fader:before{ content: ""; position: absolute; background-position: 0 0; width: 593px; height: 782px; left: -240px;top: 0px; }
+	
+}
+@media only screen and (min-width: 1140px) {
+    .wrapper { width: 1026px; /* 1140px - 10% for margins */ margin: 0 auto; }
+}
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.clearfix:before, .clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+* { background: transparent !important; color: #000 !important; box-shadow:none !important; text-shadow: none !important;}
+a, a:visited { text-decoration: underline; }
+a[href]:after { content: " (" attr(href) ")";}
+abbr[title]:after { content: " (" attr(title) ")"; }
+.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+img { max-width: 100% !important; page-break-inside: avoid; }
+
+@page { margin: 0.5cm; }
+p, h2, h3 { orphans: 3; widows: 3; }
+h2, h3 { page-break-after: avoid; }
+}
