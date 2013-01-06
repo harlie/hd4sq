@@ -2,6 +2,7 @@ class FollowUpMailer < ActionMailer::Base
   default from: "mailer@couchcachet.com"
 
   def follow_up(itinerary)
+    return unless @itinerary.foursquare_user.email
     @itinerary = itinerary
     @itinerary.zip =  @itinerary.zip ?  @itinerary.zip : 10001
     start_date = Time.now.strftime('%m/%d/%y')
@@ -26,7 +27,7 @@ class FollowUpMailer < ActionMailer::Base
       date = res['meta']['startDate'].gsub(/\d*-0*(\d*)-0*(\d*)/, '\1/\2')
       @activities << { :title => res['title'], :date => date , :url => res['url']}
     end
-    mail to: @itinerary.foursquare_user.get_email, subject: "Get off your couch"
+    mail to: @itinerary.foursquare_user.email, subject: "Get off your couch"
     
   end
 end
