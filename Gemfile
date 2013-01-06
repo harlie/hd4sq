@@ -4,7 +4,7 @@ gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'twilio-ruby'
 gem 'httparty'
 gem 'xml-simple', :require => 'xmlsimple'
 # Gems used only for assets and not required

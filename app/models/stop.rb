@@ -11,6 +11,14 @@ class Stop < ActiveRecord::Base
     reply = HTTParty.post(url, options)
     self.complete = true
     self.save
+    if self.itinerary.foursquare_user.phone
+      @client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
+      @client.account.sms.messages.create(
+        :from => '+19173380724',
+        :to => self.itinerary.foursquare_user.phone,
+        :body => 'Hey there! CouchCachet letting you know we just checked you into ' + self.name
+      )
+    end
   end
   
   def local_time_to_post
