@@ -29,7 +29,7 @@ class Itinerary < ActiveRecord::Base
       itin.demo = true 
     end
     itin.save
-    itin.fill_it_out
+    itin.fill_it_out('Standard')
 
     return itin
   end
@@ -74,19 +74,23 @@ class Itinerary < ActiveRecord::Base
     self.stops.create({ :name => name, :time_to_post => time, :venue_id => venue_id})
   end
   
-  def fill_it_out
-    start = Time.now + 30.minutes
+  def fill_it_out(route)
+    routes = YAML.load_file("#{Rails.root}/config/itineraries.yml")
+    next_time = Time.now + 30.minutes
   
-    #restaurant
-    self.make_foursquare_stop("section=food", start, "")
-    next_time =  start + (80 + Random.rand(40)).minutes
-    
-    #concert
-    self.make_jambase_stop("", next_time, "")
-    next_time = next_time + (80 + Random.rand(40)).minutes
-    
-    #bar
-    self.make_foursquare_stop("section=drinks", next_time, "")
+    routes[route].each do |stop|
+      params = stop['params'] ? stop['params'] : ""
+      shout_idx = Random.rand(stop['shouts'].length)
+      shout = stop['shouts'][shout_idx]
+      case stop['api']
+      when 'foursquare'
+        self.make_foursquare_stop(params, next_time, shout)
+      when 'jambase'
+        self.make_jambase_stop(params, next_time, shout)    
+      end
+      next_time =  next_time + (80 + Random.rand(40)).minutes
+      
+    end
     
   end
 end
