@@ -30,7 +30,6 @@ class Itinerary < ActiveRecord::Base
     end
     itin.save
     itin.fill_it_out(0)
-
     return itin
   end
   

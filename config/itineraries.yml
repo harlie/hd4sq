@@ -19,3 +19,24 @@
    params: section=drinks
    shouts:
    - Great vibe!
+   
+- 
+  name: Artsy Fartsy
+  path:
+  - #coffee
+   api: foursquare
+   params: section=coffee
+   shouts:
+   - Great coffee
+   
+  - #arty space
+   api: foursquare
+   params: section=arts
+   shouts:
+   - It's existential
+     
+  - #winebar
+    api: foursquare
+    params: query=wine+bar
+    shouts:
+    - Great grapes!
