@@ -1,7 +1,7 @@
 class Itinerary < ActiveRecord::Base
   has_many :stops
   belongs_to :foursquare_user
-  attr_accessible :checkin_id, :foursquare_user_id, :approved, :demo
+  attr_accessible :checkin_id, :foursquare_user_id, :approved, :demo,:zip
   
   def to_s
     sched = ''
