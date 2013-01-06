@@ -1,5 +1,5 @@
 class ItinerariesController < ApplicationController
-  layout "show"
+  layout "pretty"
   def show
     @itinerary = Itinerary.find_by_checkin_id(params[:id])
   end
