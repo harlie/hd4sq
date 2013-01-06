@@ -17,7 +17,7 @@ class Itinerary < ActiveRecord::Base
     itin.foursquare_user = user
     itin.checkin_id = checkin['id']
     itin.demo = false
-    itin.tz_offset = checkin['timeZoneOffset'].gsub(/(-?)(\d+)(\d{2})/, "\\1#{'\2'.rjust(3, '0')}:\\3")
+    itin.tz_offset = checkin['timeZoneOffset'].to_s.gsub(/(-?)(\d+)(\d{2})/, "\\1#{'\2'.rjust(3, '0')}:\\3")
     if checkin["shout"] && checkin['shout'] =~ /#demo/ 
       itin.demo = true 
     end
