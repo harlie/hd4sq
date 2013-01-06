@@ -23,7 +23,7 @@ class FollowUpMailer < ActionMailer::Base
     @activities = Array.new
     active = JSON.parse(json_data)
     active['_results'].each do |res|
-      date =~ res['meta']['startDate'].gsub(/\d*-(\d*)-(\d*)/, '\1/\2')
+      date = res['meta']['startDate'].gsub(/\d*-(\d*)-(\d*)/, '\1/\2')
       @activities << { :title => res['title'], :date => date , :url => res['url']}
     end
     mail to: @itinerary.foursquare_user.get_email, subject: "Get off your couch"
