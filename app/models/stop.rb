@@ -13,4 +13,10 @@ class Stop < ActiveRecord::Base
     self.complete = true
     self.save
   end
+  
+  def self.check_in_all
+    Stop.approved_stops.post_due.each do |stop|
+      stop.checkin
+    end
+  end
 end
