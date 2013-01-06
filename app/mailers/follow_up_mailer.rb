@@ -11,15 +11,18 @@ class FollowUpMailer < ActionMailer::Base
     xml_data = Net::HTTP.get_response(URI.parse(url)).body
     doc = REXML::Document.new(xml_data)
     @shows = Array.new
-    doc.elements['JamBase_Data/event'].each do |event|
-      venue_name = doc.elements['venue/venue_name'].text
-      date = doc.elements['event_date'].text
-      artist = doc.elements['JamBase_Data/event/artists/artist/artist_name'].text 
-      @shows << "#{date} - #{artist} @  #{venue_name}"
-    end
+   # doc.elements['JamBase_Data/event'].each do |event|
+  #    venue_name = event.elements['venue/venue_name'].text
+  #    date = event.elements['event_date'].text
+  #    artist = event.elements['JamBase_Data/event/artists/artist/artist_name'].text 
+  #    @shows << "#{date} - #{artist} @  #{venue_name}"
+  #  end
     
-    
-    
+    url ="http://api.amp.active.com/search?v=json&l=#{@itinerary.zip}&api_key=EJZBN9Q8AG76TV49P5M5DRR5"
+    json_data = Net::HTTP.get_response(URI.parse(url)).body
+    active = JSON.parse(json_data)
+    active['search']['results'].each do |res|
+    @activities << "#{res['result']['title']} - #{res['result']['startDate']}"
     mail to: @itinerary.foursquare_user.get_email, subject: "Get off your couch"
     
   end
