@@ -15,7 +15,9 @@
   <h3>How about one of these activities? (powered by active.com)</h3>
   <ul>
   
-   
+    <% @activities.each do |activity| %>
+    <li><%= activity %></li>
+    <% end %>
   </ul>
   <br/>
   <br/>
