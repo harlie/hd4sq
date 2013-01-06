@@ -13,6 +13,11 @@ class Stop < ActiveRecord::Base
     self.save
   end
   
+  def local_time_to_post
+    offset = self.itinerary.tz_offset? self.itinerary.tz_offset : "00:00"
+    return time_to_post + Time.zone_offset(offset)
+  end
+  
   def self.check_in_all
     Stop.approved_stops.post_due.each do |stop|
       stop.check_in

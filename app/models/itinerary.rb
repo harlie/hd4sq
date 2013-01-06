@@ -1,12 +1,12 @@
 class Itinerary < ActiveRecord::Base
   has_many :stops
   belongs_to :foursquare_user
-  attr_accessible :checkin_id, :foursquare_user_id, :approved, :demo,:zip
+  attr_accessible :checkin_id, :foursquare_user_id, :approved, :demo,:zip,:tz_offset
   
   def to_s
     sched = ''
     stops.each do |stop|
-      sched += stop.time_to_post.strftime('%l:%M%P')
+      sched += stop.local_time_to_post.strftime('%l:%M%P')
       sched += " - " + stop.name + "\n"
     end   
     return sched
@@ -17,6 +17,7 @@ class Itinerary < ActiveRecord::Base
     itin.foursquare_user = user
     itin.checkin_id = checkin['id']
     itin.demo = false
+    itin.tz_offset = checkin['timeZoneOffset'].gsub(/(-?)(\d+)(\d{2})/, "\\1#{'\2'.rjust(3, '0')}:\\3")
     if checkin["shout"] && checkin['shout'] =~ /#demo/ 
       itin.demo = true 
     end
