@@ -1,7 +1,7 @@
 class Itinerary < ActiveRecord::Base
   has_many :stops
   belongs_to :foursquare_user
-  attr_accessible :checkin_id, :foursquare_user_id, :approved
+  attr_accessible :checkin_id, :foursquare_user_id, :approved, :demo
   
   def to_s
     sched = ''
@@ -18,17 +18,16 @@ class Itinerary < ActiveRecord::Base
     itin.checkin_id = checkin['id']
     itin.save
     itin.fill_it_out(checkin)
+    itin.demo = false
+    if checkin["shout"] && checkin['shout'] =~ /#demo/ 
+      itin.demo = true 
+    end
     return itin
   end
   
   def fill_it_out(checkin)
-    start = Time.now
-    demo = false
-    if checkin["shout"] && checkin['shout'] =~ /#demo/ 
-      demo = true 
-    else
-      start += 30.minutes
-    end
+    start = Time.now + 30.minutes
+    
     #restaurant
     lat_lng = checkin['venue']['location']['lat'].to_s + "," + checkin['venue']['location']['lng'].to_s
     url = "https://api.foursquare.com/v2/venues/explore?v=20130105&ll=#{lat_lng}&radius=2000&section=food&friendVisits=notvisited&oauth_token=#{self.foursquare_user.access_token}"
@@ -50,7 +49,7 @@ class Itinerary < ActiveRecord::Base
     lat_lng = result['response']['groups'][0]['items'][0]['venue']['location']['lat'].to_s + "," +result['response']['groups'][0]['items'][0]['venue']['location']['lng'].to_s 
     zip = result['response']['groups'][0]['items'][0]['venue']['location']['postalCode'].to_s
     self.stops.create({ :name => name, :time_to_post => start, :venue_id => venue_id})
-    next_time = demo ? start : start + (80 + Random.rand(40)).minutes
+    next_time =  start + (80 + Random.rand(40)).minutes
     
     #concert
     date = next_time.strftime('%m/%d/%y')
@@ -75,7 +74,7 @@ class Itinerary < ActiveRecord::Base
     venue_id = result['response']['venues'][0]['id']
     lat_lng = result['response']['venues'][0]['location']['lat'].to_s + "," +result['response']['venues'][0]['location']['lng'].to_s 
     self.stops.create({ :name => name, :time_to_post => next_time, :venue_id => venue_id})
-    next_time = demo ? start : next_time + (80 + Random.rand(40)).minutes
+    next_time = next_time + (80 + Random.rand(40)).minutes
     
     
     #bar

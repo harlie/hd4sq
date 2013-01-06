@@ -7,6 +7,11 @@ class ItinerariesController < ApplicationController
   def update
      @itinerary = Itinerary.find_by_id(params[:id])
      @itinerary.update_attributes(params[:itinerary])
+     if @itinerary.demo
+       @itinerary.stops.each do |stop|
+         stop.checkin
+       end
+     end
      render 'show'
   end
 end
