@@ -23,7 +23,7 @@ class FollowUpMailer < ActionMailer::Base
     
     json_data = Net::HTTP.get_response(URI.parse(url)).body
     STDERR.puts json_data
-    
+    @activities = Array.new
     active = JSON.parse(json_data)
     active['_results'].each do |res|
       @activities << "#{res['title']} - #{res['startDate']}"
