@@ -8,7 +8,7 @@ class FoursquareUser < ActiveRecord::Base
   end
 
   def get_email
-    url = "https://api.foursquare.com/v2/users/self?v=20130105&oauth_token=#{self..access_token}"
+    url = "https://api.foursquare.com/v2/users/self?v=20130105&oauth_token=#{self.access_token}"
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
