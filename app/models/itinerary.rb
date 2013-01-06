@@ -47,7 +47,7 @@ class Itinerary < ActiveRecord::Base
     venue_id = result['response']['groups'][0]['items'][0]['venue']['id']
     lat_lng = result['response']['groups'][0]['items'][0]['venue']['location']['lat'].to_s + "," +result['response']['groups'][0]['items'][0]['venue']['location']['lng'].to_s 
     zip = result['response']['groups'][0]['items'][0]['venue']['location']['postalCode'].to_s
-    self.stops.create({ :name => name, :time_to_post => time, :venue_id => venue_id})
+    self.stops.create({ :name => name, :time_to_post => time, :venue_id => venue_id, :shout => shout})
   end
   
   def make_jambase_stop(params, time, shout)
@@ -71,7 +71,7 @@ class Itinerary < ActiveRecord::Base
     result = JSON.parse(response.body)
     venue_id = result['response']['venues'][0]['id']
     
-    self.stops.create({ :name => name, :time_to_post => time, :venue_id => venue_id})
+    self.stops.create({ :name => name, :time_to_post => time, :venue_id => venue_id, :shout => shout})
   end
   
   def fill_it_out(route)

@@ -1,6 +1,6 @@
 class Stop < ActiveRecord::Base
   belongs_to :itinerary
-  attr_accessible :complete, :itinerary_id, :name, :time_to_post, :venue_id
+  attr_accessible :complete, :itinerary_id, :name, :time_to_post, :venue_id, :shout
   
   scope :approved_stops, joins(:itinerary).where('itineraries.approved=true').readonly(false)
   scope :post_due, lambda { where("(complete is null OR complete !=true) AND time_to_post < ?", Time.now ) }
