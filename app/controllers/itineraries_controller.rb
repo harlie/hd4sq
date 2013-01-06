@@ -9,7 +9,7 @@ class ItinerariesController < ApplicationController
      @itinerary.update_attributes(params[:itinerary])
      if @itinerary.demo
        @itinerary.stops.each do |stop|
-         stop.checkin
+         stop.check_in
        end
      end
      render 'show'
