@@ -42,6 +42,9 @@ class Itinerary < ActiveRecord::Base
     request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
     result = JSON.parse(response.body)
+    unless (result['response']['groups'] &&  result['response']['groups'][0]  && result['response']['groups'][0]['items'] && result['response']['groups'][0]['items'][0] && result['response']['groups'][0]['items'][0]['venue'])
+      return
+    end
     name = result['response']['groups'][0]['items'][0]['venue']['name']
     venue_id = result['response']['groups'][0]['items'][0]['venue']['id']
     lat_lng = result['response']['groups'][0]['items'][0]['venue']['location']['lat'].to_s + "," +result['response']['groups'][0]['items'][0]['venue']['location']['lng'].to_s 

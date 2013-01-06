@@ -115,12 +115,12 @@
 
   - #trending
    api: foursquare
-   params: section=trending&offset=20
+   params: section=trending&offset=2
    shouts:
    - Aren't I cool?
 
   - #trending
     api: foursquare
-    params: section=trending&offset=40
+    params: section=trending&offset=4
     shouts:
     - Wish you were me yet?
