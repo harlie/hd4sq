@@ -92,4 +92,10 @@ class Itinerary < ActiveRecord::Base
     end
     
   end
+  
+  def refill(route)
+    self.stops.delete_all
+    fill_it_out(route)
+  end
+  
 end

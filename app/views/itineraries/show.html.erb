@@ -23,5 +23,5 @@
       <%= f.submit({ :value => "Let's Do This!",  :class => 'btn' })  %>
     <% end %>
 
-    <p class="cancel">Not Feeling it?</p>
+    <p class="cancel"><%=link_to "Not Feeling it?",edit_itinerary_path(@itinerary.to_s)%> </p>
       <%end%>

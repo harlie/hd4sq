@@ -1,0 +1,10 @@
+Select a new itinerary below
+<%= form_for @itinerary, :url => itinerary_path(@itinerary.to_s) do |f| %>
+  <% @routes.each_with_index do |route, index| %>
+    <%= button_tag({ :name => "route", :value => index,  :class => 'btn' }) do  %>
+      <%=route['name'] %>
+    <% end %>
+  <% end %>
+<% end %>
+
+    

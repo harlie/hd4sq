@@ -40,3 +40,87 @@
     params: query=wine+bar
     shouts:
     - Great grapes!
+    
+- 
+  name: New In Town
+  path:
+  - #coffee
+   api: foursquare
+   params: section=coffee
+   shouts:
+   - Great coffee
+
+  - #touristy
+   api: foursquare
+   params: section=sights
+   shouts:
+   - I love this town!
+
+  - #restaurant
+    api: foursquare
+    params: section=food
+    shouts:
+    - Great food!
+    
+- 
+  name: Feeling Outdoorsy
+  path:
+  - #coffee
+   api: foursquare
+   params: section=coffee
+   shouts:
+   - Great coffee
+
+  - #outdoors
+   api: foursquare
+   params: section=outdoors
+   shouts:
+   - Nothing like fresh air!
+
+  - #restaurant
+    api: foursquare
+    params: section=food
+    shouts:
+    - Great food!
+    
+- 
+  name: Gone Diving
+  path:
+  - #dive
+   api: foursquare
+   params: query=dive+bar
+   shouts:
+   - Booze
+
+  - #dive
+   api: foursquare
+   params: query=dive+bar&offset=20
+   shouts:
+   - Booze
+
+  - #dive
+    api: foursquare
+    params: query=dive+bar&offset=40
+    shouts:
+    - More booze
+    
+- 
+  name: Hang with the cool kids
+  path:
+  - #trending
+   api: foursquare
+   params: section=trending
+   shouts:
+   - Look at me
+
+  - #trending
+   api: foursquare
+   params: section=trending&offset=20
+   shouts:
+   - Aren't I cool?
+
+  - #trending
+    api: foursquare
+    params: section=trending&offset=40
+    shouts:
+    - Wish you were me yet?
