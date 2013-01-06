@@ -1,15 +1,26 @@
 <html>
 <body>
-  Hey!
+  <h2>Hey!</h2>
   
-  We said you did the following yesterday:
+  <h3>We said you did the following yesterday:</h3>
   <% @itinerary.stops.each do |stop| %>
     <div class="stop">
       <%= stop.time_to_post.strftime('%l:%M%P') + " " + stop.name %>
     </div>
   <% end %>
   <br/>
-  Maybe you should do something today.  Get out and explore the world!
+  <h3>Maybe you should do something today.  Get out and explore the world!</h3>
+  <h3>How about one of these shows? (powered by jambase)</h3>
+  <ul>
+  
+    <% @shows.each do |show| %>
+    <li><%= show %></li>
+    <% end %>
+  </ul>
+  <br/>
+
+  <br/>
+  <br/>
   <br/>
   Love,<br/>
   The CouchCachet Team
