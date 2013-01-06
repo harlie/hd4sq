@@ -15,7 +15,7 @@ class Stop < ActiveRecord::Base
   
   def self.check_in_all
     Stop.approved_stops.post_due.each do |stop|
-      stop.checkin
+      stop.check_in
     end
   end
 end
