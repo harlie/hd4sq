@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render text: "hello #{current_user.name}"
+    render text: "hello #{current_user.name}.  Welcome to CouchCachet.  Next time you check in from home, we'll be in touch."
   end
 
   private
