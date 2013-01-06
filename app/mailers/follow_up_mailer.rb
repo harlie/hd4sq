@@ -6,7 +6,7 @@ class FollowUpMailer < ActionMailer::Base
     @itinerary.zip =  @itinerary.zip ?  @itinerary.zip : 10001
     start_date = Time.now.strftime('%m/%d/%y')
     end_date = (Time.now + 1.week).strftime('%m/%d/%y')
-    url = "http://api.jambase.com/search?apikey=78hjynre9at8tk4grtq3fdz7&zip=#{@itinerary.zip}&radius=10&startDate=#{start_date}&endDate=#{end_date}"
+    url = "http://api.jambase.com/search?apikey=78hjynre9at8tk4grtq3fdz7&zip=#{@itinerary.zip}&radius=10&n=10&startDate=#{start_date}&endDate=#{end_date}"
     STDERR.puts url
     xml_data = Net::HTTP.get_response(URI.parse(url)).body
     doc = XmlSimple.xml_in(xml_data, { 'KeyAttr' => 'name' })    
