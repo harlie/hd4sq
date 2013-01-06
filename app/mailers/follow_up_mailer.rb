@@ -15,7 +15,7 @@ class FollowUpMailer < ActionMailer::Base
       venue_name = event['venue'][0]['venue_name'][0]
       date = event['event_date'][0]
       artist = event['artists'][0]['artist'][0]['artist_name'][0]
-      event_url = event.elements['event_url'].text
+      event_url = event['event_url'][0]
       @shows << { :title => "#{artist} @ #{venue_name}", :date => date , :url => event_url}
     end
     
