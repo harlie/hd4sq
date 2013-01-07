@@ -1,6 +1,6 @@
 class FoursquareUser < ActiveRecord::Base
   attr_accessible :name, :email, :phone
-  
+  has_many :itineraries
 
   def client
     @client ||= FoursquareClient.new(access_token)
