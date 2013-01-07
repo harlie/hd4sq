@@ -4,7 +4,7 @@
 <% if @itinerary.approved? %>
   Your current "plans" 
 <% else %>
-  Your night's about to get a lot more interesting
+  Either way, your night's about to get a lot more interesting
 <% end %>
 <% @itinerary.stops.each_with_index do |stop, index| %>
     <div class="note">
