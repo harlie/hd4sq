@@ -25,7 +25,7 @@ body { font: 16px/26px Helvetica, Helvetica Neue, Arial;  -webkit-font-smoothing
     background: #f3f8fc; /* Adjust Background colour of header */
     color: #525b60;  /* Adjust colour of header text */
 	text-shadow: 1px 1px 0 #ffffff;
-	padding-top: 0px;
+	padding-top: 50px;
 }
 
 
@@ -36,7 +36,7 @@ body { font: 16px/26px Helvetica, Helvetica Neue, Arial;  -webkit-font-smoothing
 	text-indent: -10000em;
 	position: relative;
 	width: 320; /* Adjust Width for Logo if needed */
-	height: 63px; /* Adjust Height for Logo if needed */
+	height: 73px; /* Adjust Height for Logo if needed */
 	background: url(../img/logo.png) no-repeat center 0; /* Change Your Logo Name */
 	background-size: 100%;
 	margin: 0 auto;
@@ -389,10 +389,10 @@ body { font: 16px/26px Helvetica, Helvetica Neue, Arial;  -webkit-font-smoothing
 		background: url(../img/logo.png) no-repeat 0 0; /* Logo */
 		margin: 0;
 	}
-	.ctaColumn { float: right; width: 52%; padding-bottom: 80px; text-align: left; padding-top: 70px; }
+	.ctaColumn { float: right; width: 52%; padding-bottom: 80px; text-align: left; padding-top: 20px; }
 	.signup:after{ right: 15%; }
 	.fader { float: left; width: 35%; }
-	.header-container { padding-top: 120px; }
+	.header-container { padding-top: 20px; }
 	.fader .flexslider1{ left: 9px; }
 	.fader:before{ content: ""; position: absolute; background-position: 0 0; width: 593px; height: 782px; left: -240px;top: 0px; }
 	
