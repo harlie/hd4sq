@@ -389,7 +389,7 @@ body { font: 16px/26px Helvetica, Helvetica Neue, Arial;  -webkit-font-smoothing
 		background: url(../img/logo.png) no-repeat 0 0; /* Logo */
 		margin: 0;
 	}
-	.ctaColumn { float: right; width: 52%; padding-bottom: 80px; text-align: left; padding-top: 0px; }
+	.ctaColumn { float: right; width: 52%; padding-bottom: 80px; text-align: left; padding-top: 20px; }
 	.signup:after{ right: 15%; }
 	.fader { float: left; width: 35%; }
 	.header-container { padding-top: 20px; }
