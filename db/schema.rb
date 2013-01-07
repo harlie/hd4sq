@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106205058) do
+ActiveRecord::Schema.define(:version => 20130107000851) do
 
   create_table "foursquare_users", :force => true do |t|
     t.string   "foursquare_id"
@@ -34,7 +34,8 @@ ActiveRecord::Schema.define(:version => 20130106205058) do
     t.boolean  "demo"
     t.string   "zip"
     t.string   "tz_offset"
-    t.string   "lat_lng"
+    t.string   "lat"
+    t.string   "lng"
   end
 
   create_table "stops", :force => true do |t|

@@ -1,7 +1,7 @@
 class Itinerary < ActiveRecord::Base
   has_many :stops
   belongs_to :foursquare_user
-  attr_accessible :checkin_id, :foursquare_user_id, :approved, :demo,:zip,:tz_offset,:lat_lng
+  attr_accessible :checkin_id, :foursquare_user_id, :approved, :demo,:zip,:tz_offset,:lat, :lng
   
   def to_s
     self.checkin_id
@@ -17,13 +17,19 @@ class Itinerary < ActiveRecord::Base
     return sched
   end
   
+  def lat_lng
+    if self.lat && self.lng
+      self.lat + "," + self.lng
+    end
+  end
   def self.create_itinerary_from_checkin(checkin, user)
     itin = self.new
     itin.foursquare_user = user
     itin.checkin_id = checkin['id']
     itin.demo = false
     itin.tz_offset = checkin['timeZoneOffset'].to_s.gsub(/(-?)(\d+)(\d{2})/, "\\1#{'\2'.rjust(3, '0')}:\\3")
-    itin.lat_lng = checkin['venue']['location']['lat'].to_s + "," + checkin['venue']['location']['lng'].to_s
+    itin.lat = checkin['venue']['location']['lat'].to_s 
+    itin.lng = checkin['venue']['location']['lng'].to_s
     itin.zip = checkin['venue']['zip']
     if checkin["shout"] && checkin['shout'] =~ /#demo/ 
       itin.demo = true 

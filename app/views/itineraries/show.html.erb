@@ -1,7 +1,10 @@
+<div class="content">
+<%= link_to(image_tag(@image[:src], :class => 'instagram'), @image[:url]) %>
+<br/><%= @image[:user] %> just did that. Don't you want to get out there?
 <% if @itinerary.approved? %>
   Your current "plans" 
 <% else %>
-  Please review and approve the itinerary
+  If not, review and approve the itinerary
 <% end %>
 <% @itinerary.stops.each_with_index do |stop, index| %>
     <div class="note">
@@ -25,3 +28,5 @@
 
     <p class="cancel"><%=link_to "Not Feeling it?",edit_itinerary_path(@itinerary.to_s)%> </p>
       <%end%>
+      
+      </content>
