@@ -1,6 +1,7 @@
 class FollowUpMailer < ActionMailer::Base
   default from: "mailer@couchcachet.com"
-
+  layout "mailers"
+  
   def follow_up(itinerary)
     return unless itinerary.foursquare_user.email
     @itinerary = itinerary
