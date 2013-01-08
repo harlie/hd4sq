@@ -6,6 +6,7 @@
   params: section=food
   shouts:
   - Love the food here
+  - I love truffles
   - Yum!
 
  - #concert
@@ -13,12 +14,14 @@
    shouts:
    - These guys are great!
    - Can't believe I get to see this live!
+   - They were better before they got poplular.
 
  - #bar
    api: foursquare
    params: section=drinks
    shouts:
    - Great vibe!
+   - I think the bartender is flirting with me
    
 - 
   name: Artsy Fartsy
@@ -28,18 +31,22 @@
    params: section=coffee
    shouts:
    - Great coffee
+   - I only drink coffee a cat has pooped.
    
   - #arty space
    api: foursquare
    params: section=arts
    shouts:
    - It's existential
+   - I could do it better.
      
   - #winebar
     api: foursquare
     params: query=wine+bar
     shouts:
     - Great grapes!
+    - Wonderful nose on this merlot
+    - Not a great year
     
 - 
   name: New In Town
@@ -49,19 +56,21 @@
    params: section=coffee
    shouts:
    - Great coffee
-
+   - I've been here a week, does that make me a New Yorker?'
+   
   - #touristy
    api: foursquare
    params: section=sights
    shouts:
    - I love this town!
+   - It looked bigger on tv
 
   - #restaurant
     api: foursquare
     params: section=food
     shouts:
     - Great food!
-    
+    - Not as good as home
 - 
   name: Feeling Outdoorsy
   path:
@@ -70,19 +79,22 @@
    params: section=coffee
    shouts:
    - Great coffee
+   - Jump-starting the day
 
   - #outdoors
    api: foursquare
    params: section=outdoors
    shouts:
    - Nothing like fresh air!
+   - Training for a marathon this year.
+   - Keeping my resolutions
 
   - #restaurant
     api: foursquare
     params: section=food
     shouts:
     - Great food!
-    
+    - Needed a bite after that workout
 - 
   name: Gone Diving
   path:
@@ -112,15 +124,18 @@
    params: section=trending
    shouts:
    - Look at me
+   - Black is the new black
 
   - #trending
    api: foursquare
    params: section=trending&offset=2
    shouts:
    - Aren't I cool?
+   - This place is full of amateurs
 
   - #trending
     api: foursquare
     params: section=trending&offset=4
     shouts:
     - Wish you were me yet?
+    - My life is exhausting

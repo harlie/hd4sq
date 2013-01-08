@@ -334,6 +334,9 @@ body { font: 16px/26px Helvetica, Helvetica Neue, Arial;  -webkit-font-smoothing
    ========================================================================== */
 
 
+	div.secret {
+		font-size: 75%;
+	}
 
 
 

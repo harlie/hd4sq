@@ -20,7 +20,8 @@ class CheckinsController < ApplicationController
       itin = Itinerary.create_itinerary_from_checkin(checkin, user)
       #url = itinerary_url(itin.checkin_id)
       url = itinerary_url(itin.to_s, :protocol => "http")
-      options = { :body => {:v => '20130105', :text => itin.to_reply, :url => url,:oauth_token => user.access_token}}
+      msg = "You may be at home, but click and look like you did this:\n" + itin.to_reply
+      options = { :body => {:v => '20130105', :text => msg, :url => url,:oauth_token => user.access_token}}
       url = "https://api.foursquare.com/v2/checkins/#{checkin_id}/reply"
       reply = HTTParty.post(url, options)
     else

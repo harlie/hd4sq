@@ -4,11 +4,11 @@
 <% if @itinerary.approved? %>
   Your current "plans" 
 <% else %>
-  If not, review and approve the itinerary
+  Either way, your night's about to get a lot more interesting
 <% end %>
 <% @itinerary.stops.each_with_index do |stop, index| %>
     <div class="note">
-        <p><%= "Stop #{index + 1}" %></p>
+        <p><%= "Thing #{index + 1}" %></p>
     </div><!--/note-->
 
     <div class="checkin">
@@ -23,7 +23,7 @@
     <% unless @itinerary.approved? %>
     <%= form_for @itinerary, :url => itinerary_path(@itinerary.to_s) do |f| %>
       <%= f.hidden_field(:approved, :value => "1") %>
-      <%= f.submit({ :value => "Let's Do This!",  :class => 'btn' })  %>
+      <%= f.submit({ :value => "Touch here to approve your itinerary!",  :class => 'btn' })  %>
     <% end %>
 
     <p class="cancel"><%=link_to "Not Feeling it?",edit_itinerary_path(@itinerary.to_s)%> </p>
