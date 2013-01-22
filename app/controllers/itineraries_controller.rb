@@ -2,15 +2,16 @@ class ItinerariesController < ApplicationController
   layout "itineraries"
   def show
     @itinerary = Itinerary.find_by_checkin_id(params[:id])
-    url = "https://api.instagram.com/v1/media/search?lat=#{@itinerary.lat}&lng=#{@itinerary.lng}&client_id=37d734676df34625a720f41c0da22479"
+    url = "https://api.instagram.com/v1/media/search?client_id=37d734676df34625a720f41c0da22479&lat=#{@itinerary.lat}&lng=#{@itinerary.lng}"
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-#    request = Net::HTTP::Get.new(uri.request_uri)
-#    response = http.request(request)
     @image = nil
+    puts url
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Get.new(uri.request_uri)
     begin
+      response = http.request(request)
       result = JSON.parse(response.body)
       @image = { :src => result['data'][0]['images']['low_resolution']['url'], 
              :url => result['data'][0]['link'],
