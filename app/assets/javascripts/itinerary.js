@@ -3,21 +3,25 @@ $(function() {
 	$(".edit-stop").click(function(){
 		var stop = $(this).parents(".stop");
 		edit_stop(stop);
+		return false;
 	});
 	
 	$(".cancel-stop").click(function(){
 		var stop = $(this).parents(".stop");
 		cancel_edit_stop(stop);
+		return false;
 	});
 	
 	$(".delete-stop").click(function(){
 		var stop = $(this).parents(".stop");
 		delete_stop(stop);
+		return false;
 	});
 	
 	$(".save-stop").click(function(){
 		var stop = $(this).parents(".stop");
 		save_stop(stop);
+		return false;
 	});
 	
 	var current_attr = {};
