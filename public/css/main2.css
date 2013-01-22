@@ -112,3 +112,21 @@ header h1{
 img.instagram {
 	width: 100%;
 }
+.edit-options {
+	float: right;
+	display: inline;
+}
+
+.note p{
+	display: inline;
+}
+
+.edit-options .editing {
+	display: none;
+}
+.edit-options a, .edit-options a:visited{
+	color: #343f44;
+}
+.stop-input {
+	width: 100%;
+}

@@ -1,24 +1,42 @@
+<%= javascript_tag "var LAT_LNG = '#{ @itinerary.lat_lng }'; var FOURSQUARE_TOKEN = '#{@itinerary.foursquare_user.access_token}';" %>
+
 <div class="content">
-<%= link_to(image_tag(@image[:src], :class => 'instagram'), @image[:url]) %>
-<br/><%= @image[:user] %> just did that. Don't you want to get out there?
+<% if @image %>  
+  <%= link_to(image_tag(@image[:src], :class => 'instagram'), @image[:url]) %>
+  <br/><%= @image[:user] %> just did that. Don't you want to get out there?
+<% end %>
 <% if @itinerary.approved? %>
   Your current "plans" 
 <% else %>
   Either way, your night's about to get a lot more interesting
 <% end %>
 <% @itinerary.stops.each_with_index do |stop, index| %>
-    <div class="note">
-        <p><%= "Thing #{index + 1}" %></p>
-    </div><!--/note-->
-
-    <div class="checkin">
+  <div class ="stop" data-id="<%= stop.id %>">
+    <%= form_for stop do |f| %>
+      <div class="note">
+          <p><%= "Thing #{index + 1}" %></p>
+          <div class="edit-options">
+            <div class = "not-editing">
+              <%= link_to raw('<i class="icon-edit icon-2x"></i>'), "#", :class => "edit-stop" %>
+              <%= link_to raw('<i class="icon-trash icon-2x"></i>'), "#", :class => "delete-stop" %>
+            </div>
+            <div class= "editing">
+              <%= link_to raw('<i class="icon-ok icon-2x"></i>'), "#", :class => "save-stop" %>
+              <%= link_to raw('<i class="icon-remove icon-2x"></i>'), "#", :class => "cancel-stop" %>
+            </div>
+          </div>
+        
+      </div><!--/note-->
+      <div class="checkin">
         <div class="title">
             <h2><%= stop.name %></h2>
         </div><!--/title-->
         <div class="content">
-		<p><%= stop.shout %></p>
+  	      <p><%= stop.shout %></p>
         </div><!--/content-->
-    </div><!--/checkin-->
+      </div><!--/checkin-->
+    <% end %>
+  </div><!--/stop -->
 <% end %>
     <% unless @itinerary.approved? %>
     <%= form_for @itinerary, :url => itinerary_path(@itinerary.to_s) do |f| %>

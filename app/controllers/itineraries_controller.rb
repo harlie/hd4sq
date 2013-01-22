@@ -7,14 +7,16 @@ class ItinerariesController < ApplicationController
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    request = Net::HTTP::Get.new(uri.request_uri)
-    response = http.request(request)
-    result = JSON.parse(response.body)
-    STDERR.puts result.to_json
-    @image = { :src => result['data'][0]['images']['low_resolution']['url'], 
+#    request = Net::HTTP::Get.new(uri.request_uri)
+#    response = http.request(request)
+    @image = nil
+    begin
+      result = JSON.parse(response.body)
+      @image = { :src => result['data'][0]['images']['low_resolution']['url'], 
              :url => result['data'][0]['link'],
             :user => result['data'][0]['user']['username']}
-    
+    rescue
+    end
   end
   
   def update

@@ -13,6 +13,7 @@ Hd4sq::Application.routes.draw do
   match '/checkins', :to => 'checkins#checkin', :via => 'POST'
   resources :itineraries
   root :to => 'users#new'
+  resources :stops, :only => [:update, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
