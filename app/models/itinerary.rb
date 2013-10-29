@@ -34,6 +34,9 @@ class Itinerary < ActiveRecord::Base
     if checkin["shout"] && checkin['shout'] =~ /#demo/ 
       itin.demo = true 
     end
+    if checkin["shout"] && checkin['shout'] =~ /#couch/
+      itin.approved = true
+    end
     itin.save
     itin.fill_it_out(0)
     return itin
